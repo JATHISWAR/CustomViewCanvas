@@ -22,6 +22,7 @@ class DrawView : View {
         var colorList = ArrayList<Int>()
         var currentColor = Color.BLACK
         var currentStyle = Paint.Style.STROKE
+
     }
 
 

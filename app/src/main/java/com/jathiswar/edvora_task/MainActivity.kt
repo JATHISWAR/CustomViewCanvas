@@ -60,18 +60,26 @@ class MainActivity : AppCompatActivity() {
         }
 
         redButton.setOnClickListener {
-            paintBrush.color = Color.RED
+            path.reset()
+            paintBrush.color = Color.parseColor("#dc2f23")
+            currentcolor(paintBrush.color)
         }
 
         blueButton.setOnClickListener {
-            paintBrush.color = Color.BLUE
+            path.reset()
+            paintBrush.color = Color.parseColor("#3376d7")
+            currentcolor(paintBrush.color)
         }
 
         greenButton.setOnClickListener {
-            paintBrush.color = Color.GREEN
+            path.reset()
+            paintBrush.color = Color.parseColor("#41872e")
+            currentcolor(paintBrush.color)
         }
         blackButton.setOnClickListener {
-            paintBrush.color = Color.BLACK
+            path.reset()
+            paintBrush.color = Color.parseColor("#131313")
+            currentcolor(paintBrush.color)
         }
 
 
@@ -80,7 +88,6 @@ class MainActivity : AppCompatActivity() {
     private fun currentcolor(color:Int){
         currentColor = color
         path = Path()
-
 
     }
 
