@@ -57,9 +57,13 @@ class DrawView : View {
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
+
+
+
+
         var x = event.x
         var y = event.y
-
+        var radius = 100
 
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
@@ -71,6 +75,7 @@ class DrawView : View {
                 path.lineTo(x,y)
                 pathList.add(path)
                 colorList.add(currentColor)
+
 
             }
 
@@ -90,6 +95,8 @@ class DrawView : View {
             canvas.drawPath(pathList[i], paintBrush)
             invalidate()
         }
+
+
     }
 
 
