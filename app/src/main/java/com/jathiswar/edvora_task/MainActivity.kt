@@ -1,6 +1,7 @@
 package com.jathiswar.edvora_task
 
 
+import android.graphics.Color
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.view.isVisible
 import android.graphics.Path
+import com.jathiswar.edvora_task.DrawView.Companion.currentColor
 
 
 class MainActivity : AppCompatActivity() {
@@ -38,32 +40,46 @@ class MainActivity : AppCompatActivity() {
 
 
         pencil.setOnClickListener {
-
+            path.reset()
         }
 
         arrow.setOnClickListener{
-
+            path.reset()
         }
 
         rectangle.setOnClickListener{
-
+            path.reset()
         }
 
         circle.setOnClickListener {
-
+            path.reset()
         }
 
         palette.setOnClickListener {
             drawpalette.isVisible = drawpalette.isVisible != true
         }
 
+        redButton.setOnClickListener {
+            paintBrush.color = Color.RED
+        }
+
+        blueButton.setOnClickListener {
+            paintBrush.color = Color.BLUE
+        }
+
+        greenButton.setOnClickListener {
+            paintBrush.color = Color.GREEN
+        }
+        blackButton.setOnClickListener {
+            paintBrush.color = Color.BLACK
+        }
 
 
+    }
 
-
-
-
-
+    private fun currentcolor(color:Int){
+        currentColor = color
+        path = Path()
 
 
     }
