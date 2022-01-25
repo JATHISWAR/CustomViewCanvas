@@ -1,15 +1,25 @@
 package com.jathiswar.edvora_task
 
 
+import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.view.isVisible
+import android.graphics.Path
 
 
 class MainActivity : AppCompatActivity() {
+
+    companion object{
+        var path = Path()
+        var paintBrush = Paint()
+    }
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
 
         pencil.setOnClickListener {
-            
+
         }
 
         arrow.setOnClickListener{
@@ -57,20 +67,6 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
