@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/rel1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/draw_toolbar"
+            android:layout_width="339dp"
+            android:layout_height="69dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="23dp"
+            android:background="@color/grey"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/pencil"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/ic_pencil" />
+
+            <ImageButton
+                android:id="@+id/arrow"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/ic_arrow" />
+
+            <ImageButton
+                android:id="@+id/rectangle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/ic_rectangle" />
+
+            <ImageButton
+                android:id="@+id/circle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/ic_circle" />
+
+            <ImageButton
+                android:id="@+id/palette"
+                android:layout_width="48dp"
+                android:layout_height="49dp"
+                android:layout_margin="8dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/ic_palette" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/draw_palette"
+        android:layout_width="200dp"
+        android:layout_height="59dp"
+        android:background="@color/grey"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.87"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.18">
+
+        <ImageButton
+            android:id="@+id/red"
+            android:layout_width="35dp"
+            android:layout_height="36dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/red_color" />
+
+        <ImageButton
+            android:id="@+id/green"
+            android:layout_width="35dp"
+            android:layout_height="36dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/green_color" />
+
+        <ImageButton
+            android:id="@+id/blue"
+            android:layout_width="35dp"
+            android:layout_height="36dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/blue_color" />
+
+        <ImageButton
+            android:id="@+id/black"
+            android:layout_width="35dp"
+            android:layout_height="36dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/black_color" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
