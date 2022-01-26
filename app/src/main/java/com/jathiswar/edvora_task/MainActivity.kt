@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         pencil.setOnClickListener {
             path.reset()
+            option = 0
         }
 
         arrow.setOnClickListener{

@@ -130,16 +130,13 @@ class DrawView : View {
         else if(option==3){
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    // Getting X coordinate
                     mX = event.x
-                    // Getting Y Coordinate
                     mY = event.y
+                    invalidate()
 
-                    return true
                 }
-
             }
-
+            return true
         }
 
 
@@ -163,16 +160,16 @@ class DrawView : View {
                 invalidate()
             }
 
-        else if(option == 3){
-            mPaint?.setColor(Color.GREEN);
+        else if(option == 3) {
             for (i in pathList.indices)
                 paintBrush.setColor(colorList[i])
-            // Draw the circle at (x,y) with radius 15
-            canvas.drawCircle(mX, mY, 100F, paintBrush);
+            canvas.drawCircle(mX, mY, 200F, paintBrush);
+            invalidate()
 
-            // Redraw the canvas
-            invalidate();
+
         }
+
+
 
 
 
