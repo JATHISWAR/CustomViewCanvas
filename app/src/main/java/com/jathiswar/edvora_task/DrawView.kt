@@ -30,11 +30,16 @@ class DrawView : View {
         var drawRectangle = false
         var beginCoordinate: PointF? = null
         var endCoordinate: PointF? = null
+        var mPaint: Paint? = null
+        var mX = 0f
+        var mY = 0f
 
     }
 
 
     constructor(context: Context) : this(context, null) {
+        mPaint = Paint()
+        mX = (-100.also { mY = it.toFloat() }).toFloat()
         brushconfig()
     }
 
@@ -92,21 +97,23 @@ class DrawView : View {
         else if(option==1){
 
 
+
+
         }
 
         else if(option==2){
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     drawRectangle = true // Start drawing the rectangle
-                    beginCoordinate!!.x = event.x
-                    beginCoordinate!!.y = event.y
-                    endCoordinate!!.x = event.x
-                    endCoordinate!!.y = event.y
+                    beginCoordinate!!.x = x
+                    beginCoordinate!!.y = y
+                    endCoordinate!!.x = x
+                    endCoordinate!!.y = y
                     invalidate() // Tell View that the canvas needs to be redrawn
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    endCoordinate!!.x = event.x
-                    endCoordinate!!.y = event.y
+                    endCoordinate!!.x = x
+                    endCoordinate!!.y = y
                     invalidate() // Tell View that the canvas needs to be redrawn
                 }
                 MotionEvent.ACTION_UP -> {
@@ -115,14 +122,23 @@ class DrawView : View {
                     invalidate() // Tell View that the canvas needs to be redrawn
                 }
             }
-            return true
 
+            return true
 
         }
 
         else if(option==3){
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    // Getting X coordinate
+                    mX = event.x
+                    // Getting Y Coordinate
+                    mY = event.y
 
+                    return true
+                }
 
+            }
 
         }
 
@@ -142,11 +158,24 @@ class DrawView : View {
             }
         }
         else if(option==2){
-            for (i in pathList.indices) {
-                paintBrush.setColor(colorList[i])
+                if(drawRectangle)
                 canvas.drawRect(beginCoordinate!!.x, beginCoordinate!!.y, endCoordinate!!.x, endCoordinate!!.y, paintBrush);
                 invalidate()
             }
+
+        else if(option == 3){
+            mPaint?.setColor(Color.GREEN);
+            for (i in pathList.indices)
+                paintBrush.setColor(colorList[i])
+            // Draw the circle at (x,y) with radius 15
+            canvas.drawCircle(mX, mY, 100F, paintBrush);
+
+            // Redraw the canvas
+            invalidate();
+        }
+
+
+
         }
 
 
@@ -156,4 +185,3 @@ class DrawView : View {
 
 
 
-}
