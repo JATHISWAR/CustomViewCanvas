@@ -73,14 +73,13 @@ class DrawView : View {
 
         var x = event.x
         var y = event.y
-
-        if(option==0) {
+    when(option) {
+        0 -> {
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     path.moveTo(x, y)
                     return true
                 }
-
                 MotionEvent.ACTION_MOVE -> {
                     path.lineTo(x, y)
                     pathList.add(path)
@@ -93,53 +92,22 @@ class DrawView : View {
 
         }
 
-
-        else if(option==1){
-
-
-
-
-        }
-
-        else if(option==2){
+        3->{
             when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    drawRectangle = true // Start drawing the rectangle
-                    beginCoordinate!!.x = x
-                    beginCoordinate!!.y = y
-                    endCoordinate!!.x = x
-                    endCoordinate!!.y = y
-                    invalidate() // Tell View that the canvas needs to be redrawn
-                }
-                MotionEvent.ACTION_MOVE -> {
-                    endCoordinate!!.x = x
-                    endCoordinate!!.y = y
-                    invalidate() // Tell View that the canvas needs to be redrawn
-                }
-                MotionEvent.ACTION_UP -> {
-                    // Do something with the beginCoordinate and endCoordinate, like creating the 'final' object
-                    drawRectangle = false // Stop drawing the rectangle
-                    invalidate() // Tell View that the canvas needs to be redrawn
-                }
-            }
 
-            return true
-
-        }
-
-        else if(option==3){
-            when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     mX = event.x
                     mY = event.y
-                    invalidate()
-
+                   invalidate()
                 }
+
             }
-            return true
+
         }
 
 
+
+}
         postInvalidate()
             return false
 
@@ -147,30 +115,29 @@ class DrawView : View {
 
 
     override fun onDraw(canvas: Canvas) {
-        if(option==0) {
-            for (i in pathList.indices) {
-                paintBrush.setColor(colorList[i])
-                canvas.drawPath(pathList[i], paintBrush)
-                invalidate()
+
+        when(option){
+            0->{
+                for (i in pathList.indices) {
+                    paintBrush.setColor(colorList[i])
+                    canvas.drawPath(pathList[i], paintBrush)
+                    invalidate()
+                }
             }
-        }
-        else if(option==2){
+
+            2->{
                 if(drawRectangle)
-                canvas.drawRect(beginCoordinate!!.x, beginCoordinate!!.y, endCoordinate!!.x, endCoordinate!!.y, paintBrush);
+                    canvas.drawRect(beginCoordinate!!.x, beginCoordinate!!.y, endCoordinate!!.x, endCoordinate!!.y, paintBrush);
                 invalidate()
             }
 
-        else if(option == 3) {
-            for (i in pathList.indices)
-                paintBrush.setColor(colorList[i])
-            canvas.drawCircle(mX, mY, 200F, paintBrush);
-            invalidate()
+            3->{
 
+                    canvas.drawCircle(mX, mY, 200F, paintBrush)
+                    invalidate()
 
+            }
         }
-
-
-
 
 
         }
