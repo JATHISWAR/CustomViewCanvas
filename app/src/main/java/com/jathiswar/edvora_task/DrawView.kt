@@ -1,10 +1,8 @@
 package com.jathiswar.edvora_task
 
+import android.R.attr
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Path
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
@@ -12,7 +10,17 @@ import android.view.ViewGroup
 import com.jathiswar.edvora_task.MainActivity.Companion.option
 import com.jathiswar.edvora_task.MainActivity.Companion.paintBrush
 import com.jathiswar.edvora_task.MainActivity.Companion.path
-import android.graphics.PointF
+import android.graphics.Paint
+
+import android.R.attr.bottom
+
+import android.R.attr.right
+
+import android.R.attr.top
+
+import android.R.attr.left
+
+import android.graphics.RectF
 
 
 
@@ -24,10 +32,13 @@ class DrawView : View {
 
     companion object {
         var pathList = ArrayList<Path>()
+        var isDrawing = false
         var colorList = ArrayList<Int>()
         var currentColor = Color.BLACK
         var currentStyle = Paint.Style.STROKE
         var drawRectangle = false
+        var startPoint:PointF? = null
+        var endPoint:PointF? = null
         var beginCoordinate: PointF? = null
         var endCoordinate: PointF? = null
         var mPaint: Paint? = null
@@ -92,13 +103,27 @@ class DrawView : View {
 
         }
 
-        3->{
+
+        1->{
             when (event.action) {
 
                 MotionEvent.ACTION_DOWN -> {
                     mX = event.x
                     mY = event.y
-                   invalidate()
+                    invalidate()
+                }
+
+            }
+
+        }
+
+     /*   2->{
+            when (event.action) {
+
+                MotionEvent.ACTION_DOWN -> {
+                    mX = event.x
+                    mY = event.y
+                    invalidate()
                 }
 
             }
@@ -106,8 +131,24 @@ class DrawView : View {
         }
 
 
+      */
 
-}
+        3-> {
+            when (event.action) {
+
+                MotionEvent.ACTION_DOWN -> {
+                    mX = event.x
+                    mY = event.y
+                    invalidate()
+                }
+
+            }
+
+        }
+
+
+    }
+
         postInvalidate()
             return false
 
@@ -125,11 +166,29 @@ class DrawView : View {
                 }
             }
 
-            2->{
-                if(drawRectangle)
-                    canvas.drawRect(beginCoordinate!!.x, beginCoordinate!!.y, endCoordinate!!.x, endCoordinate!!.y, paintBrush);
+
+            1->{
+
+                canvas.drawLine(200F,500F,width-200F,500F, paintBrush)
+                canvas.drawLine(width-300F,540F,width-200F,500F, paintBrush)
+                canvas.drawLine(width-300F,460F,width-200F,500F, paintBrush)
                 invalidate()
             }
+
+
+
+            2->{
+
+                canvas.drawLine(300F,500F,width-300F,500F, paintBrush)
+                canvas.drawLine(300F,900F,width-300F,900F, paintBrush)
+                canvas.drawLine(width-300F,900F,width-300F,500F, paintBrush)
+                canvas.drawLine(300F,900F,300F,500F, paintBrush)
+
+                invalidate()
+            }
+
+
+
 
             3->{
 
