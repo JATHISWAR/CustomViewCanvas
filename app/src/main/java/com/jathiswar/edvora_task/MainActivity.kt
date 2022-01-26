@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     companion object{
         var path = Path()
         var paintBrush = Paint()
+        var option = 0
     }
 
 
@@ -45,14 +46,17 @@ class MainActivity : AppCompatActivity() {
 
         arrow.setOnClickListener{
             path.reset()
+            option = 1
         }
 
         rectangle.setOnClickListener{
             path.reset()
+            option = 2
         }
 
         circle.setOnClickListener {
             path.reset()
+            option = 3
         }
 
         palette.setOnClickListener {

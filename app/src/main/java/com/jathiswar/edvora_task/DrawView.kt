@@ -9,8 +9,13 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import com.jathiswar.edvora_task.MainActivity.Companion.option
 import com.jathiswar.edvora_task.MainActivity.Companion.paintBrush
 import com.jathiswar.edvora_task.MainActivity.Companion.path
+import android.graphics.PointF
+
+
+
 
 
 class DrawView : View {
@@ -22,6 +27,9 @@ class DrawView : View {
         var colorList = ArrayList<Int>()
         var currentColor = Color.BLACK
         var currentStyle = Paint.Style.STROKE
+        var drawRectangle = false
+        var beginCoordinate: PointF? = null
+        var endCoordinate: PointF? = null
 
     }
 
@@ -58,28 +66,64 @@ class DrawView : View {
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
 
-
-
-
         var x = event.x
         var y = event.y
-        var radius = 100
 
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                path.moveTo(x, y)
-                return true
+        if(option==0) {
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    path.moveTo(x, y)
+                    return true
+                }
+
+                MotionEvent.ACTION_MOVE -> {
+                    path.lineTo(x, y)
+                    pathList.add(path)
+                    colorList.add(currentColor)
+
+                }
+
+                else -> return false
             }
 
-            MotionEvent.ACTION_MOVE -> {
-                path.lineTo(x,y)
-                pathList.add(path)
-                colorList.add(currentColor)
+        }
 
 
+        else if(option==1){
+
+
+        }
+
+        else if(option==2){
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    drawRectangle = true // Start drawing the rectangle
+                    beginCoordinate!!.x = event.x
+                    beginCoordinate!!.y = event.y
+                    endCoordinate!!.x = event.x
+                    endCoordinate!!.y = event.y
+                    invalidate() // Tell View that the canvas needs to be redrawn
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    endCoordinate!!.x = event.x
+                    endCoordinate!!.y = event.y
+                    invalidate() // Tell View that the canvas needs to be redrawn
+                }
+                MotionEvent.ACTION_UP -> {
+                    // Do something with the beginCoordinate and endCoordinate, like creating the 'final' object
+                    drawRectangle = false // Stop drawing the rectangle
+                    invalidate() // Tell View that the canvas needs to be redrawn
+                }
             }
+            return true
 
-            else -> return false
+
+        }
+
+        else if(option==3){
+
+
+
         }
 
 
@@ -90,10 +134,19 @@ class DrawView : View {
 
 
     override fun onDraw(canvas: Canvas) {
-        for(i in pathList.indices){
-            paintBrush.setColor(colorList[i])
-            canvas.drawPath(pathList[i], paintBrush)
-            invalidate()
+        if(option==0) {
+            for (i in pathList.indices) {
+                paintBrush.setColor(colorList[i])
+                canvas.drawPath(pathList[i], paintBrush)
+                invalidate()
+            }
+        }
+        else if(option==2){
+            for (i in pathList.indices) {
+                paintBrush.setColor(colorList[i])
+                canvas.drawRect(beginCoordinate!!.x, beginCoordinate!!.y, endCoordinate!!.x, endCoordinate!!.y, paintBrush);
+                invalidate()
+            }
         }
 
 
