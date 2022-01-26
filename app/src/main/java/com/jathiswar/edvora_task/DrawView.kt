@@ -162,8 +162,6 @@ class DrawView : View {
             }
 
 
-
-
             3->{
 
                     canvas.drawCircle(mX, mY, 200F, paintBrush)
