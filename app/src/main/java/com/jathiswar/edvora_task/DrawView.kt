@@ -45,12 +45,14 @@ class DrawView : View {
         var mX = 0f
         var mY = 0f
 
+
     }
 
 
     constructor(context: Context) : this(context, null) {
         mPaint = Paint()
         mX = (-100.also { mY = it.toFloat() }).toFloat()
+
         brushconfig()
     }
 
@@ -104,34 +106,6 @@ class DrawView : View {
         }
 
 
-        1->{
-            when (event.action) {
-
-                MotionEvent.ACTION_DOWN -> {
-                    mX = event.x
-                    mY = event.y
-                    invalidate()
-                }
-
-            }
-
-        }
-
-     /*   2->{
-            when (event.action) {
-
-                MotionEvent.ACTION_DOWN -> {
-                    mX = event.x
-                    mY = event.y
-                    invalidate()
-                }
-
-            }
-
-        }
-
-
-      */
 
         3-> {
             when (event.action) {
