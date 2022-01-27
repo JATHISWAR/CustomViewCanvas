@@ -44,6 +44,10 @@ class DrawView : View {
         var mPaint: Paint? = null
         var mX = 0f
         var mY = 0f
+        var aX = 0f
+        var aY = 0f
+        var bX = 0f
+        var bY = 0f
 
 
     }
@@ -52,6 +56,9 @@ class DrawView : View {
     constructor(context: Context) : this(context, null) {
         mPaint = Paint()
         mX = (-100.also { mY = it.toFloat() }).toFloat()
+        aX = (-100.also { aY = it.toFloat() }).toFloat()
+        bX = (-100.also { bY = it.toFloat() }).toFloat()
+
 
         brushconfig()
     }
@@ -106,6 +113,32 @@ class DrawView : View {
         }
 
 
+        1-> {
+            when (event.action) {
+
+                MotionEvent.ACTION_DOWN -> {
+                    aX = event.x
+                    aY = event.y
+                    invalidate()
+                }
+
+            }
+
+        }
+
+        2-> {
+            when (event.action) {
+
+                MotionEvent.ACTION_DOWN -> {
+                    bX = event.x
+                    bY = event.y
+                    invalidate()
+                }
+
+            }
+
+        }
+
 
         3-> {
             when (event.action) {
@@ -143,9 +176,10 @@ class DrawView : View {
 
             1->{
 
-                canvas.drawLine(200F,500F,width-200F,500F, paintBrush)
-                canvas.drawLine(width-300F,540F,width-200F,500F, paintBrush)
-                canvas.drawLine(width-300F,460F,width-200F,500F, paintBrush)
+                canvas.drawLine(aX,aY,aX-400,aY, paintBrush)
+                canvas.drawLine(aX,aY,aX-100,aY-40, paintBrush)
+                canvas.drawLine(aX,aY,aX-100,aY+40, paintBrush)
+
                 invalidate()
             }
 
@@ -153,11 +187,20 @@ class DrawView : View {
 
             2->{
 
-                canvas.drawLine(300F,500F,width-300F,500F, paintBrush)
+                canvas.drawLine(bX,bY,bX-300,bY, paintBrush)
+                canvas.drawLine(bX,bY+400,bX-300,bY+400, paintBrush)
+                canvas.drawLine(bX,bY+400,bX-300,bY, paintBrush)
+                canvas.drawLine(bX,bY+400,bX,bY, paintBrush)
+
+
+
+
+                /*
+                canvas.drawLine(bX,500F,width-300F,500F, paintBrush)
                 canvas.drawLine(300F,900F,width-300F,900F, paintBrush)
                 canvas.drawLine(width-300F,900F,width-300F,500F, paintBrush)
                 canvas.drawLine(300F,900F,300F,500F, paintBrush)
-
+*/
                 invalidate()
             }
 
