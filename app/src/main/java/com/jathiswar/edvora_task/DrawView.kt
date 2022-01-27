@@ -32,15 +32,9 @@ class DrawView : View {
 
     companion object {
         var pathList = ArrayList<Path>()
-        var isDrawing = false
         var colorList = ArrayList<Int>()
         var currentColor = Color.BLACK
         var currentStyle = Paint.Style.STROKE
-        var drawRectangle = false
-        var startPoint:PointF? = null
-        var endPoint:PointF? = null
-        var beginCoordinate: PointF? = null
-        var endCoordinate: PointF? = null
         var mPaint: Paint? = null
         var mX = 0f
         var mY = 0f
