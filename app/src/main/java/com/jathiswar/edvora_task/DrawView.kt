@@ -176,7 +176,7 @@ class DrawView : View {
 
             1->{
 
-                canvas.drawLine(aX,aY,aX-400,aY, paintBrush)
+                canvas.drawLine(aX,aY,aX-600,aY, paintBrush)
                 canvas.drawLine(aX,aY,aX-100,aY-40, paintBrush)
                 canvas.drawLine(aX,aY,aX-100,aY+40, paintBrush)
 
@@ -187,9 +187,9 @@ class DrawView : View {
 
             2->{
 
-                canvas.drawLine(bX,bY,bX-300,bY, paintBrush)
-                canvas.drawLine(bX,bY+400,bX-300,bY+400, paintBrush)
-                canvas.drawLine(bX-300,bY+400,bX-300,bY, paintBrush)
+                canvas.drawLine(bX,bY,bX-400,bY, paintBrush)
+                canvas.drawLine(bX-400,bY+400,bX-400,bY, paintBrush)
+                canvas.drawLine(bX,bY+400,bX-400,bY+400, paintBrush)
                 canvas.drawLine(bX,bY+400,bX,bY, paintBrush)
 
 
